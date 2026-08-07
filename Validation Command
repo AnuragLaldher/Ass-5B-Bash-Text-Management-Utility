@@ -1,45 +1,48 @@
 •	Create a sample file:
 	o	cat > sample.txt <<EOF
-	o	Linux is awesome
-	o	Linux is powerful
-	o	I love Linux
+	o	The Alchemist — Author: Paulo Coelho
+	o	Harry Potter and the Philosopher's Stone — Author: J. K. Rowling
+	o	The Hobbit — Author: J. R. R. Tolkien
+	o	Pride and Prejudice — Author: Jane Austen
+	o	Wings of Fire — Authors: A. P. J. Abdul Kalam and Arun Tiwari
 	o	EOF
 
 •	Add line at top
-o	./otTextEditor addlinetop sample.txt "Welcome"
+	./otTextEditor addlinetop book_editors "Famous Books and Editors"
 
 •	Add line at bottom
-o	./otTextEditor addlinebottom sample.txt "Thank You"
+	./otTextEditor addlineat book_editors 2 " You have inserted me at 2nd line of book editors"
 
 •	Add line at line 2
-o	./otTextEditor addlineat sample.txt 2 "Inserted Line"
+	./otTextEditor addlineat book_editors 2 "You have inserted me at 2nd line of book editors”
 
 •	Replace first occurrence
-o	./otTextEditor updatefirstword sample.txt Linux Ubuntu
+	./otTextEditor updatefirstword book_editors Famous Popular
 
 •	Replace all occurrences
-o	./otTextEditor updateallwords sample.txt Linux Ubuntu
+	./otTextEditor updateallwords book_editors Author Writer
 
 •	Delete first occurrence of a word
-o	./otTextEditor deleteword sample.txt Linux
+	./otTextEditor deleteword book_editors "Arun Tiwari"
 
 •	Insert word
-o	./otTextEditor insertword sample.txt Linux Server
+./otTextEditor insertword book_editors "The Hobbit" "Boomerang"
 
 •	Delete line number 3
-o	./otTextEditor deleteline sample.txt 3
+./otTextEditor deleteline book_editors 3
 
 •	Delete lines containing "Ubuntu"
-o	./otTextEditor deletelinecontaining sample.txt Ubuntu
+./otTextEditor deletelinecontaining book_editors Writer
 
 •	Show file
-o	./otTextEditor show sample.txt
+./otTextEditor show book_editors
 
 •	Count lines
-o	./otTextEditor countlines sample.txt
+./otTextEditor countlines book_editors
 
 •	Count words
-o	./otTextEditor countwords sample.txt
+./otTextEditor countwords book_editors
 
 •	Show line numbers
-o	./otTextEditor linenumbers sample.txt
+./otTextEditor linenumbers book_editors
+
