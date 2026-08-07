@@ -1,0 +1,45 @@
+•	Create a sample file:
+	o	cat > sample.txt <<EOF
+	o	Linux is awesome
+	o	Linux is powerful
+	o	I love Linux
+	o	EOF
+
+•	Add line at top
+o	./otTextEditor addlinetop sample.txt "Welcome"
+
+•	Add line at bottom
+o	./otTextEditor addlinebottom sample.txt "Thank You"
+
+•	Add line at line 2
+o	./otTextEditor addlineat sample.txt 2 "Inserted Line"
+
+•	Replace first occurrence
+o	./otTextEditor updatefirstword sample.txt Linux Ubuntu
+
+•	Replace all occurrences
+o	./otTextEditor updateallwords sample.txt Linux Ubuntu
+
+•	Delete first occurrence of a word
+o	./otTextEditor deleteword sample.txt Linux
+
+•	Insert word
+o	./otTextEditor insertword sample.txt Linux Server
+
+•	Delete line number 3
+o	./otTextEditor deleteline sample.txt 3
+
+•	Delete lines containing "Ubuntu"
+o	./otTextEditor deletelinecontaining sample.txt Ubuntu
+
+•	Show file
+o	./otTextEditor show sample.txt
+
+•	Count lines
+o	./otTextEditor countlines sample.txt
+
+•	Count words
+o	./otTextEditor countwords sample.txt
+
+•	Show line numbers
+o	./otTextEditor linenumbers sample.txt
