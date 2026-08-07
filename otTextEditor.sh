@@ -5,43 +5,43 @@ cat <<EOF
 Usage:
 
 Add line at top
-./otTextEditor addLineTop <file> <line>
+./otTextEditor addlinetop <file> <line>
 
 Add line at bottom
-./otTextEditor addLineBottom <file> <line>
+./otTextEditor addlinebottom <file> <line>
 
 Add line at specific position
-./otTextEditor addLineAt <file> <line number> <line>
+./otTextEditor addlineat <file> <line number> <line>
 
 Replace first occurrence of a word
-./otTextEditor updateFirstWord <file> <old word> <new word>
+./otTextEditor updatefirstword <file> <old word> <new word>
 
 Replace all occurrences of a word
-./otTextEditor updateAllWords <file> <old word> <new word>
+./otTextEditor updateallwords <file> <old word> <new word>
 
 Delete first occurrence of a word
-./otTextEditor deleteWord <file> <word>
+./otTextEditor deleteword <file> <word>
 
 Insert a word after another word
-./otTextEditor insertWord <file> <existing word> <new word>
+./otTextEditor insertword <file> <existing word> <new word>
 
 Delete a line
-./otTextEditor deleteLine <file> <line number>
+./otTextEditor deleteline <file> <line number>
 
 Delete lines containing a word
-./otTextEditor deleteLineContaining <file> <word>
+./otTextEditor deletelinecontaining <file> <word>
 
 Show file
 ./otTextEditor show <file>
 
 Count lines
-./otTextEditor countLines <file>
+./otTextEditor countlines <file>
 
 Count words
-./otTextEditor countWords <file>
+./otTextEditor countwords <file>
 
 Show line numbers
-./otTextEditor lineNumbers <file>
+./otTextEditor linenumbers <file>
 EOF
 exit 1
 }
@@ -57,7 +57,7 @@ check_file() {
 #######################################
 # Add Line at Top
 #######################################
-addLineTop() {
+addlinetop() {
     check_file "$1"
     sed -i "1i $2" "$1"
 }
@@ -65,7 +65,7 @@ addLineTop() {
 #######################################
 # Add Line at Bottom
 #######################################
-addLineBottom() {
+addlinebottom() {
     check_file "$1"
     echo "$2" >> "$1"
 }
@@ -73,7 +73,7 @@ addLineBottom() {
 #######################################
 # Add Line at Specific Position
 #######################################
-addLineAt() {
+addlineat() {
     check_file "$1"
     sed -i "${2}i $3" "$1"
 }
@@ -81,7 +81,7 @@ addLineAt() {
 #######################################
 # Replace First Occurrence
 #######################################
-updateFirstWord() {
+updatefirstword() {
     check_file "$1"
     sed -i "0,/$2/s//$3/" "$1"
 }
@@ -89,7 +89,7 @@ updateFirstWord() {
 #######################################
 # Replace All Occurrences
 #######################################
-updateAllWords() {
+updateallwords() {
     check_file "$1"
     sed -i "s/$2/$3/g" "$1"
 }
@@ -97,7 +97,7 @@ updateAllWords() {
 #######################################
 # Delete First Occurrence of Word
 #######################################
-deleteWord() {
+deleteword() {
     check_file "$1"
     sed -i "0,/$2/s//$3/" "$1"
 }
@@ -105,7 +105,7 @@ deleteWord() {
 #######################################
 # Insert Word
 #######################################
-insertWord() {
+insertword() {
     check_file "$1"
     sed -i "s/$2/$2 $3/g" "$1"
 }
@@ -113,7 +113,7 @@ insertWord() {
 #######################################
 # Delete Line
 #######################################
-deleteLine() {
+deleteline() {
     check_file "$1"
     sed -i "${2}d" "$1"
 }
@@ -121,7 +121,7 @@ deleteLine() {
 #######################################
 # Delete Line Containing Word
 #######################################
-deleteLineContaining() {
+deletelinecontaining() {
     check_file "$1"
     sed -i "/$2/d" "$1"
 }
@@ -137,7 +137,7 @@ show() {
 #######################################
 # Extra Feature : Count Lines
 #######################################
-countLines() {
+countlines() {
     check_file "$1"
     wc -l "$1"
 }
@@ -145,7 +145,7 @@ countLines() {
 #######################################
 # Extra Feature : Count Words
 #######################################
-countWords() {
+countwords() {
     check_file "$1"
     wc -w "$1"
 }
@@ -153,7 +153,7 @@ countWords() {
 #######################################
 # Extra Feature : Show Line Numbers
 #######################################
-lineNumbers() {
+linenumbers() {
     check_file "$1"
     nl "$1"
 }
@@ -164,49 +164,49 @@ lineNumbers() {
 
 case "$1" in
 
-addLineTop)
+addlinetop)
     [ $# -eq 3 ] || usage
-    addLineTop "$2" "$3"
+    addlinetop "$2" "$3"
     ;;
 
-addLineBottom)
+addlinebottom)
     [ $# -eq 3 ] || usage
-    addLineBottom "$2" "$3"
+    addlinebottom "$2" "$3"
     ;;
 
-addLineAt)
+addlineat)
     [ $# -eq 4 ] || usage
-    addLineAt "$2" "$3" "$4"
+    addlineat "$2" "$3" "$4"
     ;;
 
-updateFirstWord)
+updatefirstword)
     [ $# -eq 4 ] || usage
-    updateFirstWord "$2" "$3" "$4"
+    updatefirstword "$2" "$3" "$4"
     ;;
 
-updateAllWords)
+updateallwords)
     [ $# -eq 4 ] || usage
-    updateAllWords "$2" "$3" "$4"
+    updateallwords "$2" "$3" "$4"
     ;;
 
-deleteWord)
-    [ $# -eq 4 ] || usage
-    deleteWord "$2" "$3" ""
-    ;;
-
-insertWord)
-    [ $# -eq 4 ] || usage
-    insertWord "$2" "$3" "$4"
-    ;;
-
-deleteLine)
+deleteword)
     [ $# -eq 3 ] || usage
-    deleteLine "$2" "$3"
+    deleteword "$2" "$3" ""
     ;;
 
-deleteLineContaining)
+insertword)
+    [ $# -eq 4 ] || usage
+    insertword "$2" "$3" "$4"
+    ;;
+
+deleteline)
     [ $# -eq 3 ] || usage
-    deleteLineContaining "$2" "$3"
+    deleteline "$2" "$3"
+    ;;
+
+deletelinecontaining)
+    [ $# -eq 3 ] || usage
+    deletelinecontaining "$2" "$3"
     ;;
 
 show)
@@ -214,19 +214,19 @@ show)
     show "$2"
     ;;
 
-countLines)
+countlines)
     [ $# -eq 2 ] || usage
-    countLines "$2"
+    countlines "$2"
     ;;
 
-countWords)
+countwords)
     [ $# -eq 2 ] || usage
-    countWords "$2"
+    countwords "$2"
     ;;
 
-lineNumbers)
+linenumbers)
     [ $# -eq 2 ] || usage
-    lineNumbers "$2"
+    linenumbers "$2"
     ;;
 
 *)
